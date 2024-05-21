@@ -49,16 +49,16 @@ export function Table() {
         },
         onClose: async () => {
           if (!canceled) {
-            await api
-              .delete(`/auth/ton-handle/${id}`, {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              })
-              .catch(() => {
-                element?.classList.remove('hidden')
-                toast.error('Não foi possível apagar')
-              })
+            // await api
+            //   .delete(`/auth/ton-handle/${id}`, {
+            //     headers: {
+            //       Authorization: `Bearer ${token}`,
+            //     },
+            //   })
+            //   .catch(() => {
+            //     element?.classList.remove('hidden')
+            //     toast.error('Não foi possível apagar')
+            //   })
           }
         },
       },

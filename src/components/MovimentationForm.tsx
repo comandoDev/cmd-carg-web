@@ -69,33 +69,33 @@ export function MovimentationForm() {
       type: type === '' ? undefined : type,
     }
 
-    await api
-      .post('auth/ton-handle', body, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(() => {
-        toast.success('Movimentação cadastrada')
-        formRef.current?.reset()
-        setReceipt([])
-        setType('')
-        setLicensePlate('')
-        getMovimentations()
-      })
-      .catch((err) => {
-        const errorMessage = err.response.data.message
+    // await api
+    //   .post('auth/ton-handle', body, {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   })
+    //   .then(() => {
+    //     toast.success('Movimentação cadastrada')
+    //     formRef.current?.reset()
+    //     setReceipt([])
+    //     setType('')
+    //     setLicensePlate('')
+    //     getMovimentations()
+    //   })
+    //   .catch((err) => {
+    //     const errorMessage = err.response.data.message
 
-        if (receipt.length === 0) {
-          return toast.error('Informe uma NF')
-        }
+    //     if (receipt.length === 0) {
+    //       return toast.error('Informe uma NF')
+    //     }
 
-        if (!type) {
-          return toast.error('Informe um Tipo de Serviço')
-        }
-        toast.error(errorMessage)
-      })
-      .finally(() => setIsLoading(false))
+    //     if (!type) {
+    //       return toast.error('Informe um Tipo de Serviço')
+    //     }
+    //     toast.error(errorMessage)
+    //   })
+    //   .finally(() => setIsLoading(false))
   }
 
   return (
@@ -191,35 +191,36 @@ export function MovimentationForm() {
           required
         />
       </Input.Root>
-      <Input.Root label="Placa">
-        <Input.Control
-          id="truckPlate"
-          name="truckPlate"
-          placeholder="Placa"
-          minLength={7}
-          maxLength={7}
-          required
-          value={licensePlate}
-          onChangeText={(value) => setLicensePlate(value.toLocaleUpperCase())}
-        />
-      </Input.Root>
-      <Input.Root label="Caminhões por dia">
-        <Input.Control
-          id="truckDay"
-          placeholder="Caminhões por Dia"
-          name="truckDay"
-          type="number"
-          required
-        />
-      </Input.Root>
       <Select.Root
         value={type}
         onValueChange={(value: ITonType) => setType(value)}
       >
-        <Select.Trigger placeholder="Tipo de Serviço" className=" h-14" />
+        <Select.Trigger placeholder="Tipo de Carga" className=" h-14" />
         <Select.Content>
+          <Select.Item text="Volume" value="Volume" />
+          <Select.Item text="Peso" value="Peso" />
+        </Select.Content>
+      </Select.Root>
+      <Select.Root
+        value={type}
+        onValueChange={(value: ITonType) => setType(value)}
+      >
+        <Select.Trigger placeholder="Tipo de Pagamento" className=" h-14" />
+        <Select.Content>
+          <Select.Item text="Reembolso" value="Reembolso" />
           <Select.Item text="Carga" value="Carga" />
           <Select.Item text="Descarga" value="Descarga" />
+        </Select.Content>
+      </Select.Root>
+      <Select.Root
+        value={type}
+        onValueChange={(value: ITonType) => setType(value)}
+      >
+        <Select.Trigger placeholder="Tipo de Contrato" className=" h-14" />
+        <Select.Content>
+          <Select.Item text="Agregado" value="Agregado" />
+          <Select.Item text="Frota" value="Frota" />
+          <Select.Item text="Cliente" value="Cliente" />
         </Select.Content>
       </Select.Root>
       <Button type="submit" isLoading={isLoading} className="w-full h-full">

@@ -73,30 +73,30 @@ export function EditModal({ movimentation: m }: EditModalProp) {
       type: type === '' ? undefined : type,
     }
 
-    await api
-      .put(`auth/ton-handle/${m.id}`, body, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(() => {
-        const formattedReceipt = receipt
-          .join(', ')
-          .replace(/,(?=[^,]*$)/, ' e ')
+    // await api
+    //   .put(`auth/ton-handle/${m.id}`, body, {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   })
+    //   .then(() => {
+    //     const formattedReceipt = receipt
+    //       .join(', ')
+    //       .replace(/,(?=[^,]*$)/, ' e ')
 
-        toast.success(`Movimentação atualizada (NF - ${formattedReceipt})`)
-        formRef.current?.reset()
-        setReceipt([])
-        setType('')
-        setLicensePlate('')
-        getMovimentations()
-        setOpen(false)
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message)
-        console.log(err)
-      })
-      .finally(() => setIsLoading(false))
+    //     toast.success(`Movimentação atualizada (NF - ${formattedReceipt})`)
+    //     formRef.current?.reset()
+    //     setReceipt([])
+    //     setType('')
+    //     setLicensePlate('')
+    //     getMovimentations()
+    //     setOpen(false)
+    //   })
+    //   .catch((err) => {
+    //     toast.error(err.response.data.message)
+    //     console.log(err)
+    //   })
+    //   .finally(() => setIsLoading(false))
   }
 
   const dataArray = m.date.split('/')
