@@ -8,8 +8,8 @@ import { MovimentationProvider } from '@/contexts/MovimentationContext'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Controle de Carga',
-  description: 'Plataforma para controle de movimentação de carga',
+  title: 'CMD Carg',
+  description: 'Plataforma para controle de despesas',
 }
 
 export default function RootLayout({

@@ -17,7 +17,7 @@ export default function Login() {
       <div className="flex justify-center items-center h-full w-full md:w-[60%] bg-white">
         <div className="w-[80%] md:w-auto">
           <h1 className="uppercase text-center font-semibold text-2xl mb-6">
-            Controle de toneladas
+            Controle de despesas
           </h1>
           <AuthForm />
         </div>
