@@ -1,6 +1,8 @@
+import { Plus } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
 import { Pagination } from '@/components/pagination'
+import { Button } from '@/components/ui/button'
 import {
   Table,
   TableBody,
@@ -17,23 +19,33 @@ export function Orders() {
     <>
       <Helmet title="Pedidos" />
 
-      <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Pedidos</h1>
-        <div className="space-y-2.5">
-          <OrderTableFilters />
+      <div className="flex flex-col gap-8">
+        <h1 className="text-3xl font-bold tracking-tight">Movimentações</h1>
+        <div className="space-y-8">
+          <div className="flex w-full justify-between">
+            <OrderTableFilters />
+            <Button>
+              <Plus className="mr-4 h-4 w-4" />
+              Nova movimentação
+            </Button>
+          </div>
 
-          <div className="rounded-md border">
+          <div className="overflow-hidden rounded-md border">
             <Table>
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[64px]"></TableHead>
-                  <TableHead className="w-[140px]">Identificador</TableHead>
-                  <TableHead className="w-[180px]">Realizado há</TableHead>
-                  <TableHead className="w-[140px]">Status</TableHead>
-                  <TableHead>Cliente</TableHead>
-                  <TableHead className="w-[140px]">Total do pedido</TableHead>
-                  <TableHead className="w-[164px]"></TableHead>
-                  <TableHead className="w-[132px]"></TableHead>
+                  <TableHead className="w-[120px]">Realizado em</TableHead>
+                  <TableHead>Fornecedor</TableHead>
+                  <TableHead>Filial</TableHead>
+                  <TableHead>Motorista</TableHead>
+                  <TableHead>Tomador</TableHead>
+                  <TableHead className="w-[110px]">Peso</TableHead>
+                  <TableHead className="w-[110px]">Valor</TableHead>
+                  <TableHead className="w-[120px]">T. Pagamento</TableHead>
+                  <TableHead className="w-[120px]">T. Contrato</TableHead>
+                  <TableHead className="w-[120px]">T. Carga</TableHead>
+                  <TableHead className="w-[31px]"></TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

@@ -13,29 +13,44 @@ import {
 export function OrderTableFilters() {
   return (
     <form className="flex items-center gap-2">
-      <span className="text-sm font-semibold">Filtros:</span>
-      <Input placeholder="ID do pedido" className="h-8 w-auto" />
-      <Input placeholder="Nome do cliente" className="h-8 w-[320px]" />
+      <Input placeholder="Pesquisar..." className="h-10 w-[420px]" />
       <Select defaultValue="all">
-        <SelectTrigger className="h-8 w-[180px]">
+        <SelectTrigger className="h-10 w-[180px]">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">Todos status</SelectItem>
-          <SelectItem value="pending">Pendente</SelectItem>
-          <SelectItem value="canceled">Cancelado</SelectItem>
-          <SelectItem value="processing">Em preparo</SelectItem>
-          <SelectItem value="delivering">Em entrega</SelectItem>
-          <SelectItem value="delivered">Entregue</SelectItem>
+          <SelectItem value="all">Todos cargas</SelectItem>
+          <SelectItem value="pending">Volume</SelectItem>
+          <SelectItem value="canceled">Peso</SelectItem>
         </SelectContent>
       </Select>
-      <Button variant="secondary" size="xs" type="submit">
-        <Search className="mr-2 h-4 w-4" />
-        Filtrar resultados
+      <Select defaultValue="all">
+        <SelectTrigger className="h-10 w-[180px]">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">Todos contrato</SelectItem>
+          <SelectItem value="pending">Agregado</SelectItem>
+          <SelectItem value="canceled">Frota</SelectItem>
+          <SelectItem value="canceled">Cliente</SelectItem>
+        </SelectContent>
+      </Select>
+      <Select defaultValue="all">
+        <SelectTrigger className="h-10 w-[180px]">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">Todos pagamento</SelectItem>
+          <SelectItem value="delivered">Carga</SelectItem>
+          <SelectItem value="delivered">Descarga</SelectItem>
+          <SelectItem value="delivered">Reembolso</SelectItem>
+        </SelectContent>
+      </Select>
+      <Button variant="secondary" type="submit">
+        <Search className="h-4 w-4" />
       </Button>
-      <Button variant="outline" size="xs" type="button">
-        <X className="mr-2 h-4 w-4" />
-        Remover filtros
+      <Button variant="outline" type="button">
+        <X className="h-4 w-4" />
       </Button>
     </form>
   )

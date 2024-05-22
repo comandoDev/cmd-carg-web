@@ -44,6 +44,7 @@ export function PopularProductsChart() {
               innerRadius={64}
               strokeWidth={8}
               labelLine={false}
+              focusable={false}
               label={({
                 cx,
                 cy,
