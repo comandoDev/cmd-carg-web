@@ -1,47 +1,34 @@
-'use client'
+import { Home, Pizza, UtensilsCrossed } from 'lucide-react'
 
-import { useRouter } from 'next/navigation'
-import { Button } from './Button'
-import { LogOut } from 'lucide-react'
-import { storage } from '@/utils/localStorage'
-import { useEffect } from 'react'
+import { AccountMenu } from './account-menu'
+import { NavLink } from './nav-link'
+import { ThemeToggle } from './theme/theme-toggle'
+import { Separator } from './ui/separator'
 
 export function Header() {
-  const router = useRouter()
+  return (
+    <div className="border-b">
+      <div className="flex h-16 items-center gap-6 px-6">
+        <Pizza className="h-6 w-6" />
 
-  const user = storage.getUser()
+        <Separator orientation="vertical" className="h-6" />
 
-  useEffect(() => {
-    if (!user) router.replace('/login')
-  })
+        <nav className="flex items-center space-x-4 lg:space-x-6">
+          <NavLink to="/">
+            <Home className="h-4 w-4" />
+            Início
+          </NavLink>
+          <NavLink to="/orders">
+            <UtensilsCrossed className="h-4 w-4" />
+            Pedidos
+          </NavLink>
+        </nav>
 
-  if (user && user.name) {
-    const userArray = user.name.split(' ')
-    const userFormatted =
-      userArray.length > 1
-        ? userArray[0] + ' ' + userArray[userArray.length - 1]
-        : userArray[0]
-
-    const handleLogout = () => {
-      router.replace('/login')
-      storage.clear()
-    }
-
-    return (
-      <div className="flex justify-center items-center w-full py-2 bg-white shadow-sm">
-        <div className="container px-6 flex justify-between items-center">
-          <div className="flex gap-2 items-center">
-            <span className="text-2xl font-bold text-purple-950 uppercase">
-              {user.branch}
-            </span>
-          </div>
-          <Button onClick={handleLogout} variant="ghost" className="p-4">
-            {userFormatted}
-            <LogOut className="h-4 w-4" />
-          </Button>
+        <div className="ml-auto flex items-center gap-2">
+          <ThemeToggle />
+          <AccountMenu />
         </div>
       </div>
-    )
-  }
-  return <div></div>
+    </div>
+  )
 }
