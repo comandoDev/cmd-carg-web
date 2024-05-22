@@ -1,73 +1,55 @@
-'use client'
+"use client";
 
-import * as Input from '@/components/Input'
-import { Button } from '@/components/Button'
-import { FormEvent, useRef, useState } from 'react'
-import { X } from 'lucide-react'
-import * as Select from './Select'
-import { api } from '@/lib/axios'
-import { ITonHandlePayload, ITonType } from '@/@types/movimentation'
-import { toast } from 'react-toastify'
-import { useMovimentation } from '@/contexts/MovimentationContext'
-import { storage } from '@/utils/localStorage'
+import * as Input from "@/components/Input";
+import { Button } from "@/components/Button";
+import { FormEvent, useRef, useState } from "react";
+import { X } from "lucide-react";
+import * as Select from "../Select";
+import { api } from "@/lib/axios";
+import { ITonHandlePayload, ITonType } from "@/@types/movimentation";
+import { toast } from "react-toastify";
+import { useMovimentation } from "@/contexts/MovimentationContext";
+import { storage } from "@/utils/localStorage";
+import { InputNF } from "./InputFN";
+import { IMovimentationForm } from "./type";
 
 export function MovimentationForm() {
-  const formRef = useRef<HTMLFormElement>(null)
-  const { getMovimentations } = useMovimentation()
-  const [isLoading, setIsLoading] = useState(false)
+  const { getMovimentations } = useMovimentation();
 
-  const [nf, setNF] = useState('')
-  const [receipt, setReceipt] = useState([] as string[])
-  const [licensePlate, setLicensePlate] = useState('')
-  const [type, setType] = useState<ITonType | ''>('')
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Data máxima daqui 10 anos
-  const today = new Date()
-  const maxDate = new Date(
-    today.getFullYear() + 10,
-    today.getMonth(),
-    today.getDate(),
-  )
-  const maxDateISO = maxDate.toISOString().split('T')[0]
+  const [nfList, setNfList] = useState([] as string[]);
+  const [type, setType] = useState<ITonType | "">("");
 
   const handleNewMovimentation = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    setIsLoading(true)
-    const token = storage.getToken()
-
-    const formElements = e.currentTarget
-      .elements as HTMLFormControlsCollection & {
-      weight: HTMLInputElement
-      client: HTMLInputElement
-      date: HTMLInputElement
-      truckDay: HTMLInputElement
-      shippingCompany: HTMLInputElement
-      truckDriver: HTMLInputElement
-      truckPlate: HTMLInputElement
-    }
+    setIsLoading(true);
+    const token = storage.getToken();
 
     const {
       weight,
       client,
-      date,
+      value,
       truckDay,
       shippingCompany,
       truckDriver,
       truckPlate,
-    } = formElements
+    } = e.currentTarget.elements as IMovimentationForm;
 
     const body: ITonHandlePayload = {
       client: client.value,
       weight: Number(weight.value),
-      date: new Date(date.value),
+      value: Number(value.value),
       truckDay: Number(truckDay.value),
       shippingCompany: shippingCompany.value,
       truckDriver: truckDriver.value,
       truckPlate: truckPlate.value,
-      receipts: receipt,
-      type: type === '' ? undefined : type,
-    }
+      type: type === "" ? undefined : type,
+    };
+
+    setIsLoading(false);
 
     // await api
     //   .post('auth/ton-handle', body, {
@@ -96,7 +78,7 @@ export function MovimentationForm() {
     //     toast.error(errorMessage)
     //   })
     //   .finally(() => setIsLoading(false))
-  }
+  };
 
   return (
     <form
@@ -104,49 +86,17 @@ export function MovimentationForm() {
       onSubmit={handleNewMovimentation}
       className="grid grid-cols-5 grid-rows-2 gap-2 w-full pb-6"
     >
-      <div className="grid grid-cols-5 gap-1">
-        <Input.Root label="Nova NF" className="col-span-2">
-          <Input.Control
-            placeholder="Nova NF"
-            value={nf}
-            onChangeText={(value) => {
-              const sanitizedValue = value.replace(/[^0-9\s]/g, '')
-              const lastWord = sanitizedValue[sanitizedValue.length - 1]
-
-              if (lastWord === ' ' && sanitizedValue.trim()) {
-                setReceipt([value.trim(), ...receipt])
-                setNF('')
-              } else {
-                setNF(sanitizedValue)
-              }
-            }}
-          />
-        </Input.Root>
-        <div className="flex col-span-3 gap-[3px] flex-wrap h-14 p-2 pt-0 bg-zinc-200 rounded-lg border border-zinc-300 overflow-auto">
-          <label className="w-full sticky top-0 pt-2 bg-zinc-200 uppercase text-[10px] font-bold text-zinc-700">
-            NF ({receipt.length})
-          </label>
-          {receipt?.map((value, index) => {
-            return (
-              <button
-                key={index}
-                type="button"
-                className="hover:bg-red-400/50 hover:text-red-800 hover:border-red-400/40 border flex text-[10px] h-4 items-center gap-[3px] justify-center bg-violet-300 rounded-full px-1.5 text-violet-800 font-semibold"
-              >
-                {value}
-                <X
-                  className="w-2.5 h-2.5"
-                  onClick={() => {
-                    const formattedValues = [...receipt]
-                    formattedValues.splice(index, 1)
-                    setReceipt(formattedValues)
-                  }}
-                />
-              </button>
-            )
-          })}
-        </div>
-      </div>
+      <InputNF nfList={nfList} setNfList={setNfList} />
+      <Input.Root label="Peso">
+        <Input.Control
+          id="value"
+          placeholder="Valor"
+          type="number"
+          name="value"
+          step="0.01"
+          required
+        />
+      </Input.Root>
       <Input.Root label="Peso">
         <Input.Control
           id="weight"
@@ -157,16 +107,7 @@ export function MovimentationForm() {
           required
         />
       </Input.Root>
-      <Input.Root label="Data">
-        <Input.Control
-          id="date"
-          max={maxDateISO}
-          placeholder="Data"
-          name="date"
-          type="date"
-          required
-        />
-      </Input.Root>
+
       <Input.Root label="Transportadora">
         <Input.Control
           id="shippingCompany"
@@ -227,5 +168,5 @@ export function MovimentationForm() {
         Enviar
       </Button>
     </form>
-  )
+  );
 }

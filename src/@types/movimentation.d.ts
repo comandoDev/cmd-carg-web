@@ -3,7 +3,7 @@ export type ITonType = 'Carga' | 'Descarga'
 export interface ITonHandlePayload {
   receipts?: string[]
   weight?: number
-  date?: Date
+  value?: number
   shippingCompany?: string
   client?: string
   truckDriver?: string
