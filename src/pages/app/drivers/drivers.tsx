@@ -30,7 +30,7 @@ export function Drivers() {
             </Button>
           </div>
 
-          <div className="bDriver overflow-hidden rounded-md">
+          <div className="overflow-hidden rounded-md border">
             <Table>
               <TableHeader>
                 <TableRow>

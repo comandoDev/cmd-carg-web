@@ -37,7 +37,7 @@ export function Suppliers() {
             </Dialog>
           </div>
 
-          <div className="bSupplier overflow-hidden rounded-md">
+          <div className="overflow-hidden rounded-md border">
             <Table>
               <TableHeader>
                 <TableRow>
