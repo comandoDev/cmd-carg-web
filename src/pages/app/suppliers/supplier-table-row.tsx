@@ -9,6 +9,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { Separator } from '@/components/ui/separator'
 import { TableCell, TableRow } from '@/components/ui/table'
 
 // interface OrderTableRowProps {}
@@ -16,63 +22,92 @@ import { TableCell, TableRow } from '@/components/ui/table'
 export function SupplierTableRow() {
   return (
     <TableRow>
+      <TableCell className="font-medium">498.897.319.43</TableCell>
+      <TableCell className="font-medium">
+        ARNALDO FUGIHARA E OUTRO- SITIO SÃO SEBASTIÃO
+      </TableCell>
       <TableCell>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+        <Popover>
+          <PopoverTrigger asChild>
             <Button
               variant="outline"
               size="xs"
               className="group-hover:bg-primary/15"
             >
-              3 NFs
+              3 Contas Bancárias
               <span className="sr-only">Quantidade de NF</span>
             </Button>
-          </DropdownMenuTrigger>
-
-          <DropdownMenuContent
-            align="start"
+          </PopoverTrigger>
+          <PopoverContent
+            className="max-h-60 w-80 overflow-y-auto"
             side="right"
-            className="max-h-56 overflow-y-scroll"
+            align="start"
           >
-            {[
-              '8908',
-              '11534',
-              '660',
-              '3140',
-              '3144',
-              '3147',
-              '3146',
-              '3145',
-              '3150',
-              '3149',
-              '3148',
-              '3143',
-              '3141',
-              '3153',
-              '3156',
-            ].map((nf, index) => {
-              return (
-                <div key={index}>
-                  {index !== 0 && <DropdownMenuSeparator />}
-                  <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                    <span>{nf}</span>
-                  </DropdownMenuItem>
-                </div>
-              )
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+            <div className="grid gap-4">
+              <div className="space-y-2">
+                <h4 className="font-medium leading-none">
+                  Rodolfo Souza Menezes
+                </h4>
+                <h4 className="text-sm font-medium leading-none text-muted-foreground">
+                  498.897.319.43
+                </h4>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">
+                  Banco do Brasil - Corrente
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Agência: 4060 - Conta: 423246
+                </p>
+              </div>
+            </div>
+            <Separator className="my-4" />
+            <div className="grid gap-4">
+              <div className="space-y-2">
+                <h4 className="font-medium leading-none">
+                  Rodolfo Souza Menezes
+                </h4>
+                <h4 className="text-sm font-medium leading-none text-muted-foreground">
+                  498.897.319.43
+                </h4>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">
+                  Banco do Brasil - Corrente
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Agência: 4060 - Conta: 423246
+                </p>
+              </div>
+            </div>
+            <Separator className="my-4" />
+            <div className="grid gap-4">
+              <div className="space-y-2">
+                <h4 className="font-medium leading-none">
+                  Rodolfo Souza Menezes
+                </h4>
+                <h4 className="text-sm font-medium leading-none text-muted-foreground">
+                  498.897.319.43
+                </h4>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">
+                  Banco do Brasil - Corrente
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Agência: 4060 - Conta: 423246
+                </p>
+              </div>
+            </div>
+          </PopoverContent>
+        </Popover>
       </TableCell>
-      <TableCell className="text-muted-foreground">09/09/2024</TableCell>
-      <TableCell className="font-medium">Diego Schell Fernandes</TableCell>
-      <TableCell>Aparecida de Goiânia</TableCell>
-      <TableCell>Diego Schell Fernandes</TableCell>
-      <TableCell>Syngenta</TableCell>
-      <TableCell>1490,90 KG</TableCell>
-      <TableCell>R$ 149,90</TableCell>
-      <TableCell>Reembolso</TableCell>
-      <TableCell>Agregado</TableCell>
+      <TableCell>Chapa</TableCell>
       <TableCell>Volume</TableCell>
+      <TableCell>R$ 15</TableCell>
+      <TableCell>Sorocaba</TableCell>
+      <TableCell>SP</TableCell>
+      <TableCell>(15) 998578511</TableCell>
       <TableCell>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

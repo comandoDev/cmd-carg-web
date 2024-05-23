@@ -11,7 +11,7 @@ export function SupplierDetails() {
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Novo Fornecedor</DialogTitle>
+        <DialogTitle>Novo Prestador</DialogTitle>
       </DialogHeader>
       <form className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
