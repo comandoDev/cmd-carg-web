@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 
 import { Pagination } from '@/components/pagination'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import {
   Table,
   TableBody,
@@ -11,6 +12,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
+import { SupplierDetails } from './supplier-details'
 import { SupplierTableFilters } from './supplier-table-filters'
 import { SupplierTableRow } from './supplier-table-row'
 
@@ -24,10 +26,15 @@ export function Suppliers() {
         <div className="space-y-8">
           <div className="flex w-full justify-between">
             <SupplierTableFilters />
-            <Button>
-              <Plus className="mr-4 h-4 w-4" />
-              Novo fornecedor
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>
+                  <Plus className="mr-4 h-4 w-4" />
+                  Novo fornecedor
+                </Button>
+              </DialogTrigger>
+              <SupplierDetails />
+            </Dialog>
           </div>
 
           <div className="bSupplier overflow-hidden rounded-md">

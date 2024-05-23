@@ -1,101 +1,109 @@
+import { Button } from '@/components/ui/button'
 import {
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 export function SupplierDetails() {
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Pedido: 1827fy2827d6h</DialogTitle>
-        <DialogDescription>Detalhes do pedido</DialogDescription>
+        <DialogTitle>Novo Fornecedor</DialogTitle>
       </DialogHeader>
+      <form className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="">Documento (CNPJ/CPF)</Label>
+            <Input />
+          </div>
 
-      <div className="space-y-6">
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell className="text-muted-foreground">Status</TableCell>
-              <TableCell className="flex justify-end">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-slate-400" />
-                  <span className="font-medium text-muted-foreground">
-                    Pendente
-                  </span>
-                </div>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="text-muted-foreground">Cliente</TableCell>
-              <TableCell className="flex justify-end">
-                Diego Schell Fernandes
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="text-muted-foreground">Telefone</TableCell>
-              <TableCell className="flex justify-end">
-                (47) 99999-9999
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="text-muted-foreground">E-mail</TableCell>
-              <TableCell className="flex justify-end">
-                diego@rocketseat.com.br
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="text-muted-foreground">
-                Realizado há
-              </TableCell>
-              <TableCell className="flex justify-end">há 3 minutos</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+          <div className="space-y-2">
+            <Label htmlFor="">Nome Fantasia</Label>
+            <Input />
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="">Tipo de Prestador</Label>
+            <Input />
+          </div>
 
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Produto</TableHead>
-              <TableHead className="text-right">Qtd.</TableHead>
-              <TableHead className="text-right">Preço</TableHead>
-              <TableHead className="text-right">Subtotal</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell>Pizza Pepperoni Família</TableCell>
-              <TableCell className="text-right">2</TableCell>
-              <TableCell className="text-right">R$ 69,90</TableCell>
-              <TableCell className="text-right">R$ 139,80</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Pizza Mussarela Família</TableCell>
-              <TableCell className="text-right">2</TableCell>
-              <TableCell className="text-right">R$ 59,90</TableCell>
-              <TableCell className="text-right">R$ 119,80</TableCell>
-            </TableRow>
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={3}>Total do pedido</TableCell>
-              <TableCell className="text-right font-medium">
-                R$ 259,60
-              </TableCell>
-            </TableRow>
-          </TableFooter>
-        </Table>
-      </div>
+          <div className="space-y-2">
+            <Label htmlFor="">Tipo de Serviço</Label>
+            <Input />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="">Valor</Label>
+            <Input />
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="">Cidade</Label>
+            <Input />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="">UF</Label>
+            <Input />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="">Celular</Label>
+            <Input />
+          </div>
+        </div>
+
+        <div className="space-y-4 py-4">
+          <div className="flex w-full justify-between">
+            <Label className="text-xl">Contas bancárias</Label>
+            <Button variant="link">Adicionar +</Button>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="">Documento Titular (CNPJ/CPF)</Label>
+              <Input />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="">Nome Titular</Label>
+              <Input />
+            </div>
+          </div>
+          <div className="grid grid-cols-4 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="">Banco</Label>
+              <Input />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="">Conta</Label>
+              <Input />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="">Agência</Label>
+              <Input />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="">Tipo da conta</Label>
+              <Input />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="">Observação</Label>
+            <Input />
+          </div>
+        </div>
+
+        <Button className="w-full" type="submit">
+          Enviar
+        </Button>
+      </form>
     </DialogContent>
   )
 }
