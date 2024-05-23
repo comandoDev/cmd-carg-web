@@ -19,9 +19,9 @@ export function SupplierTableFilters() {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">Todos cargas</SelectItem>
-          <SelectItem value="pending">Volume</SelectItem>
-          <SelectItem value="canceled">Peso</SelectItem>
+          <SelectItem value="all">Todos tipos</SelectItem>
+          <SelectItem value="pending">Chapa</SelectItem>
+          <SelectItem value="canceled">Motorista</SelectItem>
         </SelectContent>
       </Select>
       <Select defaultValue="all">
@@ -29,21 +29,9 @@ export function SupplierTableFilters() {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">Todos contrato</SelectItem>
-          <SelectItem value="pending">Agregado</SelectItem>
-          <SelectItem value="canceled">Frota</SelectItem>
-          <SelectItem value="canceled">Cliente</SelectItem>
-        </SelectContent>
-      </Select>
-      <Select defaultValue="all">
-        <SelectTrigger className="h-10 w-[180px]">
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">Todos pagamento</SelectItem>
-          <SelectItem value="delivered">Carga</SelectItem>
-          <SelectItem value="delivered">Descarga</SelectItem>
-          <SelectItem value="delivered">Reembolso</SelectItem>
+          <SelectItem value="all">Todos serviços</SelectItem>
+          <SelectItem value="pending">Tonelada</SelectItem>
+          <SelectItem value="canceled">Volume</SelectItem>
         </SelectContent>
       </Select>
       <Button variant="secondary" type="submit">
