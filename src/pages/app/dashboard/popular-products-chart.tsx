@@ -5,11 +5,9 @@ import colors from 'tailwindcss/colors'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 const data = [
-  { product: 'Pepperoni', amount: 40 },
-  { product: 'Mussarela', amount: 30 },
-  { product: 'Marguerita', amount: 50 },
-  { product: '4 Queijos', amount: 16 },
-  { product: 'Frango frito', amount: 26 },
+  { product: 'Empresa', amount: 40 },
+  { product: 'Chapa', amount: 30 },
+  { product: 'Motorista', amount: 50 },
 ]
 
 const COLORS = [
@@ -41,8 +39,7 @@ export function PopularProductsChart() {
               cx="50%"
               cy="50%"
               outerRadius={86}
-              innerRadius={64}
-              strokeWidth={8}
+              innerRadius={48}
               labelLine={false}
               focusable={false}
               label={({
@@ -63,7 +60,7 @@ export function PopularProductsChart() {
                   <text
                     x={x}
                     y={y}
-                    className="fill-muted-foreground text-xs"
+                    className="fill-muted-foreground font-semibold"
                     textAnchor={x > cx ? 'start' : 'end'}
                     dominantBaseline="central"
                   >
@@ -80,7 +77,7 @@ export function PopularProductsChart() {
                   <Cell
                     key={`cell-${index}`}
                     fill={COLORS[index]}
-                    className="stroke-background hover:opacity-80"
+                    className="stroke-background outline-none hover:opacity-80"
                   />
                 )
               })}
