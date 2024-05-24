@@ -5,8 +5,8 @@ import { AuthLayout } from './pages/_layouts/auth'
 import { NotFound } from './pages/404'
 import { Dashboard } from './pages/app/dashboard/dashboard'
 import { Drivers } from './pages/app/drivers/drivers'
-import { Orders } from './pages/app/orders/orders'
 import { Suppliers } from './pages/app/suppliers/suppliers'
+import { Transactions } from './pages/app/transaction/transactions'
 import { SignIn } from './pages/auth/sign-in'
 import { SignUp } from './pages/auth/sign-up'
 
@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/movimentacoes',
-        element: <Orders />,
+        element: <Transactions />,
       },
       {
         path: '/motoristas',

@@ -13,7 +13,7 @@ import { TableCell, TableRow } from '@/components/ui/table'
 
 // interface OrderTableRowProps {}
 
-export function OrderTableRow() {
+export function TransactionTableRow() {
   return (
     <TableRow>
       <TableCell>

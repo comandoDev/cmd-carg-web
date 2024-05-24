@@ -11,19 +11,19 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { OrderTableFilters } from './order-table-filters'
-import { OrderTableRow } from './order-table-row'
+import { TransactionTableFilters } from './transaction-table-filters'
+import { TransactionTableRow } from './transaction-table-row'
 
-export function Orders() {
+export function Transactions() {
   return (
     <>
-      <Helmet title="Pedidos" />
+      <Helmet title="Movimentações" />
 
       <div className="flex flex-col gap-8">
         <h1 className="text-3xl font-bold tracking-tight">Movimentações</h1>
         <div className="space-y-8">
           <div className="flex w-full justify-between">
-            <OrderTableFilters />
+            <TransactionTableFilters />
             <Button>
               <Plus className="mr-4 h-4 w-4" />
               Nova movimentação
@@ -50,7 +50,7 @@ export function Orders() {
               </TableHeader>
               <TableBody>
                 {Array.from({ length: 10 }).map((_, i) => {
-                  return <OrderTableRow key={i} />
+                  return <TransactionTableRow key={i} />
                 })}
               </TableBody>
             </Table>

@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-export function OrderTableFilters() {
+export function TransactionTableFilters() {
   return (
     <form className="flex items-center gap-2">
       <Input placeholder="Pesquisar..." className="h-10 w-[420px]" />
