@@ -17,19 +17,19 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
+const min = 60
+const max = 1200
+
 const data = [
-  { date: '10/12', revenue: 1200 },
-  { date: '11/12', revenue: 800 },
-  { date: '12/12', revenue: 900 },
-  { date: '13/12', revenue: 400 },
-  { date: '14/12', revenue: 2300 },
-  { date: '15/12', revenue: 800 },
-  { date: '16/12', revenue: 640 },
+  ...Array.from({ length: 30 }, (_, i) => {
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
+    return { date: `${i + 1}/12`, count: randomNumber }
+  }),
 ]
 
-export function RevenueChart() {
+export function MovementChart() {
   return (
-    <Card className="col-span-6">
+    <Card className="col-span-2">
       <CardHeader className="flex-row items-center justify-between pb-8">
         <div className="space-y-1">
           <CardTitle className="text-base font-medium">
@@ -42,26 +42,30 @@ export function RevenueChart() {
         <ResponsiveContainer width="100%" height={240}>
           <LineChart data={data} style={{ fontSize: 12 }}>
             <XAxis dataKey="date" axisLine={false} tickLine={false} dy={16} />
-            <YAxis
-              stroke="#888"
-              axisLine={false}
-              tickLine={false}
-              width={40}
-              // tickFormatter={(value: number) =>
-              //   value.toLocaleString('pt-BR', {
-              //     style: 'currency',
-              //     currency: 'BRL',
-              //   })
-              // }
-            />
+            <YAxis stroke="#888" axisLine={false} tickLine={false} width={40} />
             <CartesianGrid vertical={false} className="stroke-muted" />
             <Line
               stroke={colors.violet[500]}
               type="linear"
               strokeWidth={2}
-              dataKey="revenue"
+              dataKey="count"
             />
-            <Tooltip animationEasing="ease-out" />
+            <Tooltip
+              animationEasing="ease-out"
+              content={({ active, payload, label }) => {
+                if (active && payload && payload.length) {
+                  return (
+                    <div className="flex flex-col gap-4 rounded-md border bg-background p-4">
+                      <p className="text-lg font-medium">{label}</p>
+                      <p className="text-sm text-violet-500">
+                        Movimentações:
+                        <span className="ml-2">{payload[0].value}</span>
+                      </p>
+                    </div>
+                  )
+                }
+              }}
+            />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>

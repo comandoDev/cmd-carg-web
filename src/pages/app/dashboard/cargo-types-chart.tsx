@@ -18,13 +18,13 @@ const COLORS = [
   colors.rose[500],
 ]
 
-export function PopularProductsChart() {
+export function CargoTypesChart() {
   return (
-    <Card className="col-span-3">
+    <Card className="col-span-1">
       <CardHeader className="pb-8">
         <div className="flex items-center justify-between ">
           <CardTitle className="text-base font-medium">
-            Produtos populares
+            Tipos de cargas
           </CardTitle>
           <BarChart className="h-4 w-4 text-muted-foreground" />
         </div>
@@ -36,7 +36,7 @@ export function PopularProductsChart() {
               data={data}
               nameKey="product"
               dataKey="amount"
-              cx="50%"
+              cx="52%"
               cy="50%"
               outerRadius={86}
               innerRadius={48}
