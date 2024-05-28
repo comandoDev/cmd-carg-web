@@ -1,7 +1,7 @@
 import {
+  Area,
+  AreaChart,
   CartesianGrid,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -40,16 +40,18 @@ export function MovementChart() {
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={240}>
-          <LineChart data={data} style={{ fontSize: 12 }}>
+          <AreaChart data={data} style={{ fontSize: 12 }}>
             <XAxis dataKey="date" axisLine={false} tickLine={false} dy={16} />
             <YAxis stroke="#888" axisLine={false} tickLine={false} width={40} />
             <CartesianGrid vertical={false} className="stroke-muted" />
-            <Line
-              stroke={colors.violet[500]}
+            <Area
+              stroke={colors.violet[400]}
               type="linear"
               strokeWidth={2}
               dataKey="count"
+              fill={colors.violet[400]}
             />
+
             <Tooltip
               animationEasing="ease-out"
               content={({ active, payload, label }) => {
@@ -66,7 +68,7 @@ export function MovementChart() {
                 }
               }}
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </CardContent>
     </Card>
