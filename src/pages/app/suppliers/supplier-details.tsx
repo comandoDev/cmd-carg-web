@@ -25,38 +25,12 @@ export function SupplierDetails() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="">Documento (CNPJ/CPF)</Label>
-                <Input
-                  onChange={(e) => {
-                    const formatCpfCnpj = (value: string) => {
-                      const cleanedValue = value.replace(/\D/g, '') // remove caracteres não numéricos
-
-                      if (cleanedValue.length <= 11) {
-                        // CPF
-                        return cleanedValue
-                          .replace(/(\d{3})(\d)/, '$1.$2')
-                          .replace(/(\d{3})(\d)/, '$1.$2')
-                          .replace(/(\d{3})(\d{1,2})/, '$1-$2')
-                          .replace(/(-\d{2})\d+?$/, '$1')
-                      } else {
-                        // CNPJ
-                        return cleanedValue
-                          .replace(/(\d{2})(\d)/, '$1.$2')
-                          .replace(/(\d{3})(\d)/, '$1.$2')
-                          .replace(/(\d{3})(\d)/, '$1/$2')
-                          .replace(/(\d{4})(\d)/, '$1-$2')
-                      }
-                    }
-
-                    const { value } = e.target
-
-                    e.target.value = formatCpfCnpj(value)
-                  }}
-                />
+                <Input mask="cpfCnpj" />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="">Nome Fantasia</Label>
-                <Input />
+                <Input mask="capitalize" />
               </div>
             </div>
             <div className="grid grid-cols-3 gap-4">

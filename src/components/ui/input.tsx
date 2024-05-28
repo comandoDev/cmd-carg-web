@@ -1,14 +1,16 @@
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
+import { format } from '@/utils/format'
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label?: string
   error?: string
+  mask?: keyof typeof format
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, onChange, mask, type, ...props }, ref) => {
     return (
       <input
         type={type}
@@ -17,6 +19,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className,
         )}
         ref={ref}
+        onChange={(e) => {
+          if (mask) {
+            const { value } = e.target
+
+            const maskedValue = format[mask](value)
+
+            e.target.value = maskedValue
+          }
+
+          onChange && onChange(e)
+        }}
         {...props}
       />
     )
