@@ -12,9 +12,9 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { SupplierDetails } from './supplier-details'
-import { SupplierTableFilters } from './supplier-table-filters'
-import { SupplierTableRow } from './supplier-table-row'
+import { SupplierDetails } from './components/supplier-details'
+import { SupplierTableFilters } from './components/SupplierTableFilters'
+import { SupplierTableRow } from './components/SupplierTableRow'
 
 export function Suppliers() {
   return (

@@ -1,4 +1,5 @@
 import { formatCpfCnpj as cpfCnpj } from './cpfCnpj'
+import { formatCurrency as currency } from './currency'
 import { formatOnlyNumbers as onlyNumbers } from './onlyNumbers'
 import {
   formatCapitalize as capitalize,
@@ -6,10 +7,11 @@ import {
   formatUppercase as uppercase,
 } from './string'
 
-export const format = {
+export const formatter = {
   onlyNumbers,
   cpfCnpj,
   uppercase,
   lowercase,
   capitalize,
+  currency,
 }

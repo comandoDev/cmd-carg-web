@@ -1,12 +1,10 @@
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
-import { format } from '@/utils/format'
+import { formatter } from '@/utils/formatter'
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  label?: string
-  error?: string
-  mask?: keyof typeof format
+  mask?: keyof typeof formatter
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -23,7 +21,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           if (mask) {
             const { value } = e.target
 
-            const maskedValue = format[mask](value)
+            const maskedValue = formatter[mask](value)
 
             e.target.value = maskedValue
           }
