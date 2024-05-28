@@ -14,12 +14,39 @@ export function SupplierFormFields() {
     formState: { errors },
   } = useFormContext<SupplierFormFieldsType>()
 
+  const generalStepErrorCount = [errors.document?.message].filter(
+    Boolean,
+  ).length
+  const bankAccountStepErrorCount = [errors.name?.message].filter(
+    Boolean,
+  ).length
+
   return (
     <>
       <Tabs defaultValue="general" className="w-full">
         <TabsList>
-          <TabsTrigger value="general">Geral</TabsTrigger>
-          <TabsTrigger value="bank-account">Contas Bancárias</TabsTrigger>
+          <TabsTrigger
+            value="general"
+            className={`group ${generalStepErrorCount && 'data-[state=active]:border-b-red-600 data-[state=active]:text-red-600'}`}
+          >
+            Geral{' '}
+            {!!generalStepErrorCount && (
+              <span className="ml-2 h-4 w-4 rounded-full bg-muted-foreground text-xs text-white group-data-[state=active]:bg-red-600">
+                {generalStepErrorCount}
+              </span>
+            )}
+          </TabsTrigger>
+          <TabsTrigger
+            value="bank-account"
+            className={`group ${bankAccountStepErrorCount && 'data-[state=active]:border-b-red-600 data-[state=active]:text-red-600'}`}
+          >
+            Contas Bancárias{' '}
+            {!!bankAccountStepErrorCount && (
+              <span className="ml-2 h-4 w-4 rounded-full bg-muted-foreground text-xs text-white group-data-[state=active]:bg-red-600">
+                {bankAccountStepErrorCount}
+              </span>
+            )}
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="general" className="space-y-5 py-4">
           <div className="grid grid-cols-2 gap-4">
