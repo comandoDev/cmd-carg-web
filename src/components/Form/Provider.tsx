@@ -6,7 +6,7 @@ import {
   SubmitHandler,
   UseFormReturn,
 } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 
 interface FormProviderProps<TFieldValues extends FieldValues> {
   formMethods: UseFormReturn<TFieldValues>
