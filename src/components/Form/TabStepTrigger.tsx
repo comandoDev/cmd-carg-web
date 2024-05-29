@@ -1,28 +1,16 @@
-import { FieldErrors, FieldValues } from 'react-hook-form'
-
 import { TabsTrigger } from '../ui/tabs'
 
-interface FormTabStepTriggerProps<TFieldValues extends FieldValues> {
+interface FormTabStepTriggerProps {
   label: string
   value: string
-  errors?: FieldErrors<TFieldValues>
-  fields?: (keyof TFieldValues)[]
+  stepErrorsCount: number
 }
 
-export function FormTabStepTrigger<TFieldValues extends FieldValues>({
+export function FormTabStepTrigger({
   label,
   value,
-  fields = [],
-  errors,
-}: FormTabStepTriggerProps<TFieldValues>) {
-  const stepErrors = fields.filter((f) => {
-    if (errors && errors[f]?.message) return true
-
-    return false
-  })
-
-  const stepErrorsCount = stepErrors.length
-
+  stepErrorsCount,
+}: FormTabStepTriggerProps) {
   return (
     <TabsTrigger
       value={value}

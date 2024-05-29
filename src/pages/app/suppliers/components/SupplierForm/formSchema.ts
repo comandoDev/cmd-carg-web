@@ -22,12 +22,14 @@ export const supplierFormFieldsSchema = z.object({
   bankAccounts: z
     .array(
       z.object({
-        document: cpfCnpjSchema,
-        name: completeNameSchema,
+        holder: z.object({
+          document: cpfCnpjSchema,
+          name: completeNameSchema,
+        }),
         bank: z.string().min(1, 'Informe um banco'),
         account: z.string().min(1, 'Informe a conta'),
         agency: z.string().min(1, 'Informe uma agência'),
-        type: z.string().min(1, 'Informe um tipo da conta'),
+        accountType: z.string().min(1, 'Informe um tipo da conta'),
         observation: z.string().optional(),
       }),
     )
