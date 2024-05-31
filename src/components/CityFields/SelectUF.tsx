@@ -21,6 +21,7 @@ export function SelectUF() {
     register,
     formState: { errors },
     setValue,
+    watch,
   } = useFormContext<CityFormFields>()
 
   return (
@@ -36,6 +37,7 @@ export function SelectUF() {
             },
           }),
         )}
+        value={watch('uf')}
       >
         <SelectTrigger className="h-10">
           <SelectValue placeholder="Selecione um estado" />
