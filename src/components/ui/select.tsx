@@ -4,6 +4,11 @@ import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
+export interface ISelectItem {
+  label: string
+  value: string
+}
+
 const Select = SelectPrimitive.Root
 
 const SelectGroup = SelectPrimitive.Group

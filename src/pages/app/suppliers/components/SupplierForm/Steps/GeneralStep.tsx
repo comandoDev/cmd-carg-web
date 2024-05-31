@@ -1,5 +1,6 @@
 import { useFormContext } from 'react-hook-form'
 
+import * as CityFields from '@/components/CityFields'
 import * as Form from '@/components/Form'
 import { FormStepProps } from '@/components/Form/type'
 
@@ -49,12 +50,16 @@ export function SupplierGeneralStep({ value }: FormStepProps) {
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        <Form.Input
+        <CityFields.Root>
+          <CityFields.SelectUF />
+          <CityFields.SelectCity />
+        </CityFields.Root>
+        {/* <Form.Input
           label="Cidade"
           error={errors.city?.message}
           {...register('city')}
-        />
-        <Form.Input label="UF" error={errors.uf?.message} {...register('uf')} />
+        /> */}
+        {/* <Form.Input label="UF" error={errors.uf?.message} {...register('uf')} /> */}
         <Form.Input
           label="Celular"
           mask="phone"
