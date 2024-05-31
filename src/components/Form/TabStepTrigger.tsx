@@ -18,9 +18,9 @@ export function FormTabStepTrigger({
     >
       {label}{' '}
       {!!stepErrorsCount && (
-        <span className="ml-2 flex h-4 w-4 items-center justify-center rounded-full bg-muted-foreground text-[0.6rem] text-white group-data-[state=active]:bg-red-600">
-          {stepErrorsCount}
-        </span>
+        <div className="ml-2 flex h-2 w-2 items-center justify-center rounded-full bg-muted-foreground text-[0.6rem] text-white group-data-[state=active]:bg-red-600">
+          {/* {stepErrorsCount} */}
+        </div>
       )}
     </TabsTrigger>
   )

@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import * as Form from '@/components/Form'
 import { FormStepProps } from '@/components/Form/type'
 
-import { SupplierFormFieldsType } from '../formSchema'
+import { SupplierFormFieldsType } from '../form-schema'
 
 export function SupplierGeneralStep({ value }: FormStepProps) {
   const {
@@ -57,6 +57,7 @@ export function SupplierGeneralStep({ value }: FormStepProps) {
         <Form.Input label="UF" error={errors.uf?.message} {...register('uf')} />
         <Form.Input
           label="Celular"
+          mask="phone"
           error={errors.phone?.message}
           {...register('phone')}
         />

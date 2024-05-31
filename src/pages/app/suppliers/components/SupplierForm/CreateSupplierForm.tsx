@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { formatter } from '@/utils/formatter'
 
 import { SupplierFormFields } from './Fields'
-import { SupplierFormFieldsType, supplierFormResolver } from './formSchema'
+import { SupplierFormFieldsType, supplierFormResolver } from './form-schema'
 
 interface CreateSupplierFormProps extends FormProps {}
 

@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form'
 
 import * as Form from '@/components/Form'
 
-import { SupplierFormFieldsType } from './formSchema'
+import { SupplierFormFieldsType } from './form-schema'
 import { SupplierBankAccountStep } from './Steps/BankAccountStep'
 import { SupplierGeneralStep } from './Steps/GeneralStep'
 

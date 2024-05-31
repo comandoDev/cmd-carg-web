@@ -8,5 +8,5 @@ export function FormStepContent({
   className,
   ...props
 }: ComponentProps<typeof TabsContent>) {
-  return <TabsContent className={cn('space-y-4  py-4', className)} {...props} />
+  return <TabsContent className={cn('space-y-6  py-4', className)} {...props} />
 }

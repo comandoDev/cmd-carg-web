@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import { completeNameSchema, cpfCnpjSchema } from '@/utils/schema/'
+import { completeNameSchema, cpfCnpjSchema, phoneSchema } from '@/utils/schema/'
 
 export const supplierFormFieldsSchema = z.object({
   id: z.string().optional(),
@@ -9,15 +9,26 @@ export const supplierFormFieldsSchema = z.object({
   name: z.string().min(1, 'Informe um nome'),
   type: z.string().min(1, 'Informe um tipo de prestador'),
   serviceType: z.string().min(1, 'Informe um tipo de serviço'),
-  value: z.string().transform((value) =>
-    value
-      .replace(/[^0-9,.-]+/g, '')
-      .replace(/\./g, '')
-      .replace(',', '.'),
-  ),
+  value: z
+    .string()
+    .transform((value) =>
+      value
+        .replace(/[^0-9,.-]+/g, '')
+        .replace(/\./g, '')
+        .replace(',', '.'),
+    )
+    .refine(
+      (value) => {
+        const numberValue = parseFloat(value)
+        return numberValue > 0
+      },
+      {
+        message: 'Insira o valor',
+      },
+    ),
   city: z.string().min(1, 'Informe uma cidade'),
   uf: z.string().min(1, 'Informe uma UF'),
-  phone: z.string().min(1, 'Informe uma Celular'),
+  phone: phoneSchema,
 
   bankAccounts: z
     .array(

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 
-import { SupplierFormFieldsType } from '../formSchema'
+import { SupplierFormFieldsType } from '../form-schema'
 
 export function SupplierBankAccountStep({ value }: FormStepProps) {
   const {
