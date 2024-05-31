@@ -37,11 +37,11 @@ export function SupplierBankAccountStep({ value }: FormStepProps) {
   return (
     <Form.StepContent value={value}>
       {fields.map((bankAccount, index) => {
-        const bankAccountErrors = errors.bankAccounts![index]
+        const bankAccountErrors = errors.bankAccounts?.[index]
 
         return (
           <div key={bankAccount.id} className="space-y-6">
-            <div>
+            <div className="flex w-full items-center justify-between">
               <Label className="text-xl">Conta Bancaria {index + 1}</Label>
               <X className="h-4 w-4" onClick={() => remove(index)} />
             </div>

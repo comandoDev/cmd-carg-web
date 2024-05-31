@@ -16,6 +16,18 @@ export function CreateSupplierForm({ closeModal }: CreateSupplierFormProps) {
     resolver: supplierFormResolver,
     defaultValues: {
       value: formatter.currency('0'),
+      bankAccounts: [
+        {
+          account: '',
+          agency: '',
+          bank: '',
+          holder: {
+            document: '',
+            name: '',
+          },
+          accountType: '',
+        },
+      ],
     },
   })
 

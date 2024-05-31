@@ -22,7 +22,17 @@ export function SupplierFormFields() {
     errors.phone?.message,
   ].filter(Boolean).length
 
-  const bankAccountStepErrorsCount = 0
+  const bankAccountStepErrorsCount = Array.isArray(errors.bankAccounts)
+    ? [
+        ...errors.bankAccounts.filter((b) => b?.holder?.document?.message),
+        ...errors.bankAccounts.filter((b) => b?.holder?.name?.message),
+        ...errors.bankAccounts.filter((b) => b?.bank?.message),
+        ...errors.bankAccounts.filter((b) => b?.account?.message),
+        ...errors.bankAccounts.filter((b) => b?.agency?.message),
+        ...errors.bankAccounts.filter((b) => b?.accountType?.message),
+        ...errors.bankAccounts.filter((b) => b?.observation?.message),
+      ].length
+    : 0
 
   return (
     <Form.MultiStepRoot defaultValue="general" className="w-full">
