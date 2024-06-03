@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async'
 
 import { Pagination } from '@/components/pagination'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import {
   Table,
   TableBody,
@@ -12,7 +11,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { DriverDetails } from './driver-details'
+import { CreateDriverModal } from './CreateDriverModal'
 import { DriverTableFilters } from './driver-table-filters'
 import { DriverTableRow } from './driver-table-row'
 
@@ -26,15 +25,12 @@ export function Drivers() {
         <div className="space-y-8">
           <div className="flex w-full justify-between">
             <DriverTableFilters />
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>
-                  <Plus className="mr-4 h-4 w-4" />
-                  Novo motorista
-                </Button>
-              </DialogTrigger>
-              <DriverDetails />
-            </Dialog>
+            <CreateDriverModal>
+              <Button>
+                <Plus className="mr-4 h-4 w-4" />
+                Novo motorista
+              </Button>
+            </CreateDriverModal>
           </div>
 
           <div className="overflow-hidden rounded-md border">
