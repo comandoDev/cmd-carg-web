@@ -41,9 +41,11 @@ export function SupplierBankAccountStep({ value }: FormStepProps) {
 
         return (
           <div key={bankAccount.id} className="space-y-6">
-            <div className="flex w-full items-center justify-between">
+            <div className="flex w-full items-center">
               <Label className="text-xl">Conta Bancaria {index + 1}</Label>
-              <X className="h-4 w-4" onClick={() => remove(index)} />
+              {index !== 0 && (
+                <X className="ml-auto h-4 w-4" onClick={() => remove(index)} />
+              )}
             </div>
             <Separator className="mb-6 mt-4" />
             <div className="grid grid-cols-2 gap-4">
