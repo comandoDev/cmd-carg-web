@@ -9,7 +9,7 @@ import { TransactionFormFields } from './Fields'
 import {
   TransactionFormFieldsType,
   transactionFormResolver,
-} from './formSchema'
+} from './form-schema'
 
 interface CreateTransactionFormProps extends FormProps {}
 
@@ -52,7 +52,7 @@ export function CreateTransactionForm({
         <Button variant="outline" onClick={finishForm}>
           Cancelar
         </Button>
-        <Button disabled={isSubmitting} type="submit">
+        <Button type="submit" isLoading={isSubmitting}>
           Salvar
         </Button>
       </Form.ButtonArea>

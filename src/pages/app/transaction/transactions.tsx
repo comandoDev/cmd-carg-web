@@ -4,13 +4,6 @@ import { Helmet } from 'react-helmet-async'
 import { Pagination } from '@/components/pagination'
 import { Button } from '@/components/ui/button'
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
-import {
   Table,
   TableBody,
   TableHead,
@@ -18,9 +11,9 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { CreateTransactionForm } from './components/TransactionForm/CreateTransactionForm'
-import { TransactionTableFilters } from './transaction-table-filters'
-import { TransactionTableRow } from './transaction-table-row'
+import { CreateTransactionModal } from './components/CreateTransactionModal'
+import { TransactionTableFilters } from './components/TransactionTableFilters'
+import { TransactionTableRow } from './components/TransactionTableRow'
 
 export function Transactions() {
   return (
@@ -32,20 +25,12 @@ export function Transactions() {
         <div className="space-y-8">
           <div className="flex w-full justify-between">
             <TransactionTableFilters />
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>
-                  <Plus className="mr-4 h-4 w-4" />
-                  Nova movimentação
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Nova Movimentação</DialogTitle>
-                </DialogHeader>
-                <CreateTransactionForm />
-              </DialogContent>
-            </Dialog>
+            <CreateTransactionModal>
+              <Button>
+                <Plus className="mr-4 h-4 w-4" />
+                Nova movimentação
+              </Button>
+            </CreateTransactionModal>
           </div>
 
           <div className="overflow-hidden rounded-md border">

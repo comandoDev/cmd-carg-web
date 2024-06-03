@@ -45,13 +45,15 @@ export function SupplierGeneralStep({ value }: FormStepProps) {
                 <SelectValue placeholder="Selecione um tipo" />
               </SelectTrigger>
               <SelectContent>
-                {['Fornecedor', 'Chapa', 'Motorista'].map((type) => {
-                  return (
-                    <SelectItem key={type} value={type}>
-                      {type}
-                    </SelectItem>
-                  )
-                })}
+                {['Cliente', 'Chapa', 'Motorista Frota', 'Agregado'].map(
+                  (type) => {
+                    return (
+                      <SelectItem key={type} value={type}>
+                        {type}
+                      </SelectItem>
+                    )
+                  },
+                )}
               </SelectContent>
             </Select>
           </Form.Field>

@@ -18,7 +18,7 @@ const COLORS = [
   colors.sky[500],
 ]
 
-export function ContractTypesChart() {
+export function supplierTypesChart() {
   return (
     <Card className="col-span-1">
       <CardHeader className="pb-8">
