@@ -1,5 +1,6 @@
 import { useFormContext } from 'react-hook-form'
 
+import { ComboboxDemo } from '@/components/Combobox'
 import * as Form from '@/components/Form'
 import {
   Select,
@@ -22,6 +23,9 @@ export function TransactionFormFields() {
   return (
     <>
       <div className="grid grid-cols-3 gap-4">
+        <Form.Field label="Motorista" error={errors.driverId?.message}>
+          <ComboboxDemo />
+        </Form.Field>
         <Form.Input
           label="Motorista"
           error={errors.driverId?.message}
