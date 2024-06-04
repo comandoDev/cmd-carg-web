@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 
 import { CargoTypesChart } from './cargo-types-chart'
-import { supplierTypesChart } from './contract-types-chart'
+import { SupplierTypesChart } from './contract-types-chart'
 import { DayExpensesCard } from './day-expenses-card'
 import { DayMovementsAmountCard } from './day-movements-amount-card'
 import { MonthExpensesCard } from './month-expenses-card'
@@ -26,7 +26,7 @@ export function Dashboard() {
           <div className="grid grid-cols-4 gap-4">
             <MovementChart />
             <CargoTypesChart />
-            <supplierTypesChart />
+            <SupplierTypesChart />
           </div>
         </div>
       </div>
