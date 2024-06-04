@@ -1,5 +1,6 @@
 import { useFormContext } from 'react-hook-form'
 
+import { ComboboxBankAccount } from '@/components/ComboboxBankAccount'
 import { ComboboxBorrower } from '@/components/ComboboxBorrower'
 import { ComboboxBranch } from '@/components/ComboboxBranch'
 import { ComboboxDriver } from '@/components/ComboboxDriver'
@@ -63,6 +64,10 @@ export function TransactionFormFields() {
 
         <Form.Field label="Fornecedor" error={errors.branchId?.message}>
           <ComboboxSupplier />
+        </Form.Field>
+
+        <Form.Field label="Conta bancária">
+          <ComboboxBankAccount />
         </Form.Field>
 
         <Form.Field label="Tipo de carga" error={errors.cargoType?.message}>
