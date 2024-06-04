@@ -16,29 +16,32 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
-import { formatter } from '@/utils/formatter'
 
-const frameworks = [
+const MOCK = [
   {
-    value: 'RODOLFO SOUZA MENEZES',
-    label: 'RODOLFO SOUZA MENEZES',
+    id: '1',
+    name: 'Aurora',
   },
   {
-    value: 'GIVANILDO DE SILVA DE CARVALHO',
-    label: 'GIVANILDO DE SILVA DE CARVALHO IOKIKHK KÇLKLÇK',
+    id: '2',
+    name: 'Indaiatuba',
   },
   {
-    value: 'LUCAS MARQUES',
-    label: 'LUCAS MARQUES',
+    id: '3',
+    name: 'M5',
+  },
+  {
+    id: '4',
+    name: 'Cuiabá',
   },
 ]
 
-export function ComboboxDemo() {
+export function ComboboxBranch() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState('')
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={setOpen} modal>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -48,25 +51,27 @@ export function ComboboxDemo() {
         >
           <span className="overflow-hidden">
             {value
-              ? frameworks.find((framework) => framework.value === value)?.label
-              : 'Selecione um motorista...'}
+              ? MOCK.find((branch) => branch.name === value)?.name
+              : 'Selecione uma filial...'}
           </span>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        className="min-w-[--radix-popover-trigger-width]  p-0"
+        className="w-[--radix-popover-trigger-width]  p-0"
       >
         <Command>
-          <CommandInput placeholder="Search framework..." />
+          <CommandInput placeholder="Pesquisar filial..." />
+
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandEmpty>Nenhum resultado encontrado</CommandEmpty>
+
             <CommandGroup>
-              {frameworks.map((framework) => (
+              {MOCK.map((branch) => (
                 <CommandItem
-                  key={framework.value}
-                  value={framework.value}
+                  key={branch.name}
+                  value={branch.name}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? '' : currentValue)
                     setOpen(false)
@@ -75,15 +80,10 @@ export function ComboboxDemo() {
                   <Check
                     className={cn(
                       'mr-2 h-4 w-4',
-                      value === framework.value ? 'opacity-100' : 'opacity-0',
+                      value === branch.name ? 'opacity-100' : 'opacity-0',
                     )}
                   />
-                  <div className="flex flex-col">
-                    <span className="text-xs text-zinc-900">
-                      {formatter.cpfCnpj('567469807536')}
-                    </span>
-                    {framework.label}
-                  </div>
+                  {branch.name}
                 </CommandItem>
               ))}
             </CommandGroup>

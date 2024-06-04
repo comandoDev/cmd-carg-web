@@ -1,6 +1,9 @@
 import { useFormContext } from 'react-hook-form'
 
-import { ComboboxDemo } from '@/components/Combobox'
+import { ComboboxBorrower } from '@/components/ComboboxBorrower'
+import { ComboboxBranch } from '@/components/ComboboxBranch'
+import { ComboboxDriver } from '@/components/ComboboxDriver'
+import { ComboboxSupplier } from '@/components/ComboboxSupplier'
 import * as Form from '@/components/Form'
 import {
   Select,
@@ -24,73 +27,15 @@ export function TransactionFormFields() {
     <>
       <div className="grid grid-cols-3 gap-4">
         <Form.Field label="Motorista" error={errors.driverId?.message}>
-          <ComboboxDemo />
-        </Form.Field>
-        <Form.Input
-          label="Motorista"
-          error={errors.driverId?.message}
-          {...register('driverId')}
-        />
-        <Form.Input
-          label="Tomador"
-          error={errors.borrowerId?.message}
-          {...register('borrowerId')}
-        />
-        <Form.Input
-          label="Filial"
-          error={errors.branchId?.message}
-          {...register('branchId')}
-        />
-
-        <Form.Field
-          label="Tipo de fornecedor"
-          error={errors.supplierType?.message}
-        >
-          <Select
-            {...registerSelect(register('supplierType'))}
-            value={watch('supplierType')}
-          >
-            <SelectTrigger className="h-10">
-              <SelectValue placeholder="Selecione um tipo" />
-            </SelectTrigger>
-            <SelectContent>
-              {['Cliente', 'Chapa', 'Motorista Frota', 'Agregado'].map(
-                (supplierType) => {
-                  return (
-                    <SelectItem key={supplierType} value={supplierType}>
-                      {supplierType}
-                    </SelectItem>
-                  )
-                },
-              )}
-            </SelectContent>
-          </Select>
+          <ComboboxDriver />
         </Form.Field>
 
-        <Form.Input
-          label="Tomador"
-          error={errors.supplierId?.message}
-          {...register('supplierId')}
-        />
+        <Form.Field label="Tomador" error={errors.borrowerId?.message}>
+          <ComboboxBorrower />
+        </Form.Field>
 
-        <Form.Field label="Tipo de carga" error={errors.cargoType?.message}>
-          <Select
-            {...registerSelect(register('cargoType'))}
-            value={watch('cargoType')}
-          >
-            <SelectTrigger className="h-10">
-              <SelectValue placeholder="Selecione um tipo" />
-            </SelectTrigger>
-            <SelectContent>
-              {['Volume', 'Peso'].map((cargoType) => {
-                return (
-                  <SelectItem key={cargoType} value={cargoType}>
-                    {cargoType}
-                  </SelectItem>
-                )
-              })}
-            </SelectContent>
-          </Select>
+        <Form.Field label="Filial" error={errors.branchId?.message}>
+          <ComboboxBranch />
         </Form.Field>
 
         <Form.Field
@@ -109,6 +54,30 @@ export function TransactionFormFields() {
                 return (
                   <SelectItem key={paymentType} value={paymentType}>
                     {paymentType}
+                  </SelectItem>
+                )
+              })}
+            </SelectContent>
+          </Select>
+        </Form.Field>
+
+        <Form.Field label="Fornecedor" error={errors.branchId?.message}>
+          <ComboboxSupplier />
+        </Form.Field>
+
+        <Form.Field label="Tipo de carga" error={errors.cargoType?.message}>
+          <Select
+            {...registerSelect(register('cargoType'))}
+            value={watch('cargoType')}
+          >
+            <SelectTrigger className="h-10">
+              <SelectValue placeholder="Selecione um tipo" />
+            </SelectTrigger>
+            <SelectContent>
+              {['Volume', 'Peso'].map((cargoType) => {
+                return (
+                  <SelectItem key={cargoType} value={cargoType}>
+                    {cargoType}
                   </SelectItem>
                 )
               })}
