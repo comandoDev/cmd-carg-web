@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/select'
 import { registerSelect } from '@/utils/register'
 
+import { NFListFields } from '../NFListFields'
 import { TransactionFormFieldsType } from './form-schema'
 
 export function TransactionFormFields() {
@@ -104,6 +105,8 @@ export function TransactionFormFields() {
           error={errors.value?.message}
           {...register('value')}
         />
+
+        <NFListFields />
       </div>
     </>
   )

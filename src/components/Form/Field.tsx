@@ -1,17 +1,24 @@
-import { ReactNode } from 'react'
+import { ComponentProps } from 'react'
 
 import { Label } from '@/components/ui/label'
+import { cn } from '@/lib/utils'
 
-interface FormFieldProps {
+interface FormFieldProps extends ComponentProps<'div'> {
   label?: string
   error?: string
   htmlFor?: string
-  children: ReactNode | ReactNode[]
 }
 
-export function FormField({ label, error, htmlFor, children }: FormFieldProps) {
+export function FormField({
+  label,
+  error,
+  htmlFor,
+  children,
+  className,
+  ...props
+}: FormFieldProps) {
   return (
-    <div className="flex flex-col space-y-2">
+    <div className={cn(['flex flex-col space-y-2', className])} {...props}>
       {label && (
         <Label htmlFor={htmlFor} className="font-medium">
           {label}

@@ -5,10 +5,11 @@ import { formatter } from '@/utils/formatter'
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   mask?: keyof typeof formatter
+  onChangeText?: (value: string) => void
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, onChange, mask, type, ...props }, ref) => {
+  ({ className, onChange, onChangeText, mask, type, ...props }, ref) => {
     return (
       <input
         type={type}
@@ -18,14 +19,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         ref={ref}
         onChange={(e) => {
-          if (mask) {
-            const { value } = e.target
+          const { value } = e.target
 
+          if (mask) {
             const maskedValue = formatter[mask](value)
 
             e.target.value = maskedValue
           }
 
+          onChangeText && onChangeText(value)
           onChange && onChange(e)
         }}
         {...props}
